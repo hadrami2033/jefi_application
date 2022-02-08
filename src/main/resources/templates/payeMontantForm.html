@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeliaf.org"
+	   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="layout">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>
+<title>forme pour ajoujer un nouveau numero</title>
+<link rel="stylesheet" type="text/css" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container" layout:fragment="content">
+<br>
+<div class="card border-secondary col-sm-10" >
+  <div  class="card-header "><h4 class="float-right">دفع مبلغ</h4> </div>
+  <div class="card-body ">
+ <form th:action="@{payetMontant}" method="post">
+   <div class="row ">
+  <div class="col-sm-9 ">
+    <div style="border-radius: 15px " class="card ">
+    <div  class="card border-secondary">
+  <kbd style="border-radius: 10px" class="bg-primary col-sm-12"><h4 class="float-right"> أدخل  المبلغ الذي تم دفعه </h4></kbd>
+  <div class="card-body">
+     <div class="form-group row">
+     
+       <div class="col-sm-5">
+       <input style="border-radius: 10px" class="form-control" type="double" name="montDiminue" />
+       </div>
+       <label class="control-label col-sm-6" ><h4>المبلغ </h4></label>
+      
+  
+     
+     </div>
+       <div class="form-group row">
+      <div class="col-sm-5">
+      <select  class="form-control" style="border-radius: 10px" name="clientName">
+        <option  th:text="${client.Nom}" ></option>
+      </select>
+      </div>
+      	<label class="control-label col-sm-6" for="inputGenre"><h4>الزبون</h4></label>
+      </div>
+      
+      <div class="form-group row">
+      <div class="col-md-5">
+      <select  class="form-control" style="border-radius: 10px" name="clientId">
+        <option  th:text="${client.id}" ></option>
+      </select>
+      </div>
+      	<label class="control-label col-sm-6" for="inputGenre"><h4>كود</h4></label>
+      </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+      <div>
+      <button style="border-radius: 10px ;width:150px;height:60px;" type="submit" class="btn btn-primary float-right my-2" ><h4>حفظ</h4></button>
+      </div>
+ </form>
+ 
+</div>
+</div>
+</div>
+</body>
+</html>

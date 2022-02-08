@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: jeffiApp
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: mts
+Implementation-Vendor-Id: com.jeffi
+Created-By: Apache Maven 3.6.3
+Build-Jdk: 1.8.0_231
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/jeffiApp
+

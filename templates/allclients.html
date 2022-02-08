@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeliaf.org"
+ 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="layout">
+<head>
+<meta charset="UTF-8"/>
+<title>list des clients</title>
+<link rel="stylesheet" type="text/css" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+<div layout:fragment="content">
+<p></p>
+<div>
+<form th:action="@{chercheClient}" method="get"> 
+	<button type="submit" class="btn btn-secondary btn-lg active">بحث</button>
+	<input type="text" name="nom"/>
+	<label>إسم الزبون</label>
+</form>
+<a th:href="@{nouveauClients}" class="btn btn-secondary btn-lg active float-right" role="button" aria-pressed="true">إضافة زبون</a>
+<br>
+<br>
+</div>
+<div class="text-info">
+<table class="table ">
+	  <thead> 
+	  <tr style="border-radius: 10px" class="bg-primary text-white">
+	  <th> الزبون</th><th>عليه</th><th>دفع</th><th>باقي عليه</th><th>إضافة مبلغ</th><th>دفع مبلغ</th><th>استئناف عملية</th><th>الحذف</th>
+	  </tr>
+	  </thead>
+	  <tbody>
+	  <tr th:each="c:${clients}">
+	  <td th:text="${c.Nom}"></td>
+	  <td th:text="${c.Montant}"></td>
+	  <td th:text="${c.MontantPaye}" ></td>
+	  <td th:text="${c.Montant-c.MontantPaye}" ></td>
+	  <td> <a th:href="@{addMontantForme(id=${c.id})}" class="btn btn-secondary btn-lg active "> إضافة</a></td>
+	  <td> <a th:href="@{payeMontantForme(id=${c.id})}" class="btn btn-primary btn-lg active "> دفع</a></td>
+	   <td> <a onclick="return confirm('هذه الخطوة تعني أن الزبون لا له ولا عليه مستحقات,هل تنوي المتابعة؟ ')" th:href="@{initiale(id=${c.id})}" class="btn btn-warning btn-lg active ">استئناف</a></td>
+	  <td> <a onclick="return confirm('هل تريد حذف الزبون؟')" th:href="@{deleteClient(id=${c.id})}" class="btn btn-danger btn-lg active "> حذف</a></td>
+	  </tr>
+	  </tbody>`
+</table>
+	
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeliaf.org" 
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="utf-8"/>
+<title>Gestion des numeros de jeffi</title>
+<link rel="stylesheet" type="text/css" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+	<header>
+	
+	<!-- <nav class="navbar navbar-light bg-light">
+	<div class="container-fluid">
+		<ul class="navbar-brand">
+			<li> <a th:href="@{allNumbers}">أرقام جيفي</a></li>
+			<li> <a th:href="@{nouveauFournisseur}">الموردين</a></li>
+			<li> <a th:href="@{nouveauFournisseur}">الزبناء</a></li>
+		</ul>
+	</div>
+	</nav> -->
+	
+	<nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light">
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+	<ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" th:href="@{allNumbers}"><h4>JeffiApp</h4> <span class="sr-only">(current)</span></a>
+      </li>
+     <li class="nav-item" > <a class="nav-link" th:href="@{allNumbers}">أرقام جيفي</a></li>
+	<li class="nav-item"> <a class="nav-link" th:href="@{allProviders}">الموردون</a></li>
+	<li class="nav-item"> <a class="nav-link" th:href="@{allClients}">الزبناء</a></li>
+    </ul>
+    </div>
+    </nav>
+	</header>
+	
+	<section layout:fragment="content">
+	</section>
+	
+	<footer class="nav-fixed-bottom">
+	<div class="container">
+		<small>
+		
+		</small>
+	</div>
+	</footer>
+</body>
+</html>

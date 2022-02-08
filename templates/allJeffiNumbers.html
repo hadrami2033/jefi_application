@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeliaf.org" 
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="layout">
+<head>
+<meta charset="UTF-8"/>
+<title>list des numeros de jeffi</title>
+<link rel="stylesheet" type="text/css" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+<p></p>
+<div layout:fragment="content">
+<br>
+<div >
+<a th:href="@{numbersPayes}" class="btn btn-secondary btn-lg active " role="button" aria-pressed="true">أرقام تم دفعها</a>
+<a th:href="@{numbersNonPayes}" class="btn btn-secondary btn-lg active float-right" role="button" aria-pressed="true">أرقام لم يتم دفعها</a>
+<br>
+<br>
+<form th:action="@{chercheNumber}" method="get"> 
+	<button type="submit" class="btn btn-secondary btn-lg active">بحث</button>
+	<input type="text" name="mc"/>
+	<label>إسم أو رقم الزبون </label>
+</form>
+<a th:href="@{nouveauNumber}" class="btn btn-secondary btn-lg active float-right" role="button" aria-pressed="true">إضافة رقم</a>
+</div>
+<div  class="text-info" >
+<table class="table ">
+	  <thead> 
+	  <tr style="border-radius: 10px" class="bg-primary text-white">
+	  <th>الرقم</th><th>الزبون</th><th>السعر</th><th>سعر المورد</th><th>تاريخ الإضافة</th><th>تم التسديد</th><th>إسم المورد</th><th>التسديد</th><th>الحذف</th>
+	  </tr>
+	  </thead>
+	  <tbody>
+	  <tr th:each="e:${listNumbers}">
+	  <td th:text="${e.Phone}"></td>
+	  <td th:text="${e.Client}"></td> 
+	  <td th:text="${e.Prix}"></td>
+	  <td th:text="${e.fourisseurPrix}"></td>
+	  <td th:text="${e.dateCreate}"></td> 
+	  <td th:switch="${e.paye}">
+	  	<a th:case="false">لا</a>
+	  	<a th:case="true">نعم</a>
+	  </td>
+	  <td th:text="${e.FournisseurName}"></td> 
+	  <td> <a onclick="return confirm('هل تريد تغيير حالة التسديد ؟')" th:href="@{paye(id=${e.id})}" class="btn btn-secondary btn-lg active " aria-pressed="false">تغيير الحالة</a></td>
+	  <td> <a onclick="return confirm('هل تريد حذف الرقم ؟')" th:href="@{delete(id=${e.id})}" class="btn btn-danger btn-lg active "> حذف</a></td>
+	  </tr>
+	  </tbody>
+</table>
+	
+</div>
+</div>
+</body>
+</html>

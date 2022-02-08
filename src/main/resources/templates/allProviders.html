@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeliaf.org"
+ 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="layout">
+<head>
+<meta charset="UTF-8"/>
+<title>list des numeros de jeffi</title>
+<link rel="stylesheet" type="text/css" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+<div layout:fragment="content">
+<p></p>
+<div>
+<br>
+<form th:action="@{chercheProvider}" method="get"> 
+	<button type="submit" class="btn btn-secondary btn-lg active">بحث</button>
+	<input type="text" name="nom"/>
+	<label>إسم المورد</label>
+</form>
+<a th:href="@{nouveauFournisseur}" class="btn btn-secondary btn-lg active col-2 float-right" role="button" aria-pressed="true">إضافة مورد</a>
+
+</div>
+<div class="text-info">
+<table class="table ">
+	  <thead> 
+	  <tr style="border-radius: 10px" class="bg-primary text-white">
+	  <th> المورد</th><th>له</th><th>عليه</th><th>باقي له</th><th>الحذف</th>
+	  </tr>
+	  </thead>
+	  <tbody>
+	  <tr th:each="f:${fournisseurs}">
+	  <td th:text="${f.Nom}"></td>
+		<td th:text="${f.Montant}"></td>
+	   <td th:text="${f.MontantPaye}" ></td>
+	   <td th:text="${f.Montant-f.MontantPaye}" ></td>
+	  <td> <a onclick="return confirm('هل تريد حذف المورد ؟')" th:href="@{deleteProvider(id=${f.id})}" class="btn btn-danger btn-lg active "> حذف</a></td>
+	  </tr>
+	  </tbody>
+</table>
+	
+</div>
+</div>
+</body>
+</html>
